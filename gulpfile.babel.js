@@ -24,7 +24,7 @@ function compile(watch) {
                .pipe(uglify())
                .pipe(sourcemaps.init({loadMaps: true}))
                .pipe(sourcemaps.write('./'))
-               .pipe(gulp.dest('./dist'))
+               .pipe(gulp.dest('./dist'));
     }
 
     if (watch) {
