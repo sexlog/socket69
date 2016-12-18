@@ -1,5 +1,6 @@
 import {Provider} from './provider';
 import {noop} from './util/noop';
+import {ucfirst} from './util/ucfirst';
 
 export class Socket69 {
 
@@ -12,6 +13,10 @@ export class Socket69 {
          */
         this._provider = new Provider(provider, options);
 
+        this._provider.on = (eventName, data) => {
+            this.on(eventName, data);
+        };
+
         /**
          *
          * @type {null}
@@ -20,9 +25,12 @@ export class Socket69 {
     }
 
     connect(options = {}) {
-        return this._provider.connect(options).then(data => {
-            this.onConnect(data);
-        })
+        return this._provider.connect(options);
+    }
+
+    on(eventName, data) {
+        eventName = ucfirst(eventName, 'on');
+        this[eventName].apply(this, [data]);
     }
 }
 

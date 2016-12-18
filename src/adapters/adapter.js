@@ -1,3 +1,6 @@
+import {noop} from '../util/noop';
+import {ucfirst} from '../util/ucfirst';
+
 export class Adapter {
 
     constructor(config) {
@@ -19,6 +22,23 @@ export class Adapter {
          * @type {Array}
          */
         this.requiredOptions = [];
+
+        /**
+         *
+         * @type {noop}
+         */
+        this.on = noop;
+
+        /**
+         *
+         * @type {[*]}
+         */
+        this.events = [
+            'error',
+            'connect',
+            'disconnect',
+            'subscribe'
+        ];
     }
 
     connect(options) {
@@ -35,5 +55,22 @@ export class Adapter {
 
     subscribe() {
 
+    }
+
+    addListeners() {
+        this.events.forEach(event => {
+            this.socket.on(event, () => {
+                event = ucfirst(event, 'on');
+                this[event].apply(this, arguments);
+            });
+        })
+    }
+
+    onConnect(data) {
+        this.on('connect', data);
+    }
+
+    onError(data) {
+        this.on('error', data);
     }
 }

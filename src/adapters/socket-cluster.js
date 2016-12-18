@@ -31,10 +31,11 @@ export class SocketClusterAdapter extends Adapter {
 
         this.socket = window.socketCluster.connect(options);
 
-        return new Promise(resolve => {
-            this.socket.on('connect', (data) => {
-                resolve(data);
-            });
+        this.socket.on('connect', (data) => {
+            this.onConnect(data);
+        });
+        this.socket.on('error', (data) => {
+            this.onError(data);
         });
     }
 }

@@ -8,6 +8,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/socketcluster-client/5.1.1/socketcluster.js"></script>
     <script src="../dist/socket69.js"></script>
     <script>
+
         let server        = Math.floor(Math.random() * 3) + 1;
         let serverCluster = 'sc-0' + server;
 
@@ -19,7 +20,11 @@
 
         socket.connect();
         socket.onConnect = function(data) {
+            console.log('Conectado via Socket69:', data);
+        };
 
+        socket.onError = function(data) {
+            console.log('Error', data);
         };
 
         /*socket.emit('ping', 'Conectei ao server ' + server);
