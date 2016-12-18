@@ -1,0 +1,26 @@
+{
+  "name": "socket69",
+  "version": "1.0.0",
+  "description": "A layer of abstraction to popular web socket libraries.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sexlog/socket69.git"
+  },
+  "author": "Sexlog",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sexlog/socket69/issues"
+  },
+  "homepage": "https://github.com/sexlog/socket69#readme",
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "gulp": "^3.9.1",
+    "gulp-sourcemaps": "^1.9.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.8.0"
+  }
+}
