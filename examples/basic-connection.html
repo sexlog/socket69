@@ -19,6 +19,7 @@
         });
 
         socket.connect();
+
         socket.onConnect = function(data) {
             console.log('Conectado via Socket69:', data);
         };
@@ -27,23 +28,12 @@
             console.log('Error', data);
         };
 
-        socket.subscribe('pong', function() {
-            console.log(arguments);
+        socket.subscribe('pong', function(data) {
+            console.log(data);
         });
 
-        var data = {
-            message: 'Oi'
-        };
+        socket.publish('pong', {message: 'OI'});
 
-        socket.publish('ping', data);
-
-        /*socket.emit('ping', 'Conectei ao server ' + server);
-
-         const defaultChannel = socket.subscribe('pong');
-
-         defaultChannel.watch(data => {
-         console.info(data);
-         });*/
     </script>
 </body>
 </html>

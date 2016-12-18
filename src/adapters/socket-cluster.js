@@ -1,5 +1,4 @@
 import {Adapter} from './adapter';
-// import {Promise} from 'es6-promise';
 
 export class SocketClusterAdapter extends Adapter {
 
@@ -39,8 +38,9 @@ export class SocketClusterAdapter extends Adapter {
      * @param channel
      * @param callback
      */
-    subscribe(channel, callback){
-        this.socket.subscribe(channel, callback);
+    subscribe(channel, callback) {
+        this.socket.subscribe(channel);
+        this.socket.watch(channel, callback);
     }
 
     /**
@@ -48,7 +48,7 @@ export class SocketClusterAdapter extends Adapter {
      * @param channel
      * @param data
      */
-    publish(channel, data){
+    publish(channel, data) {
         this.socket.publish(channel, data);
     }
 
