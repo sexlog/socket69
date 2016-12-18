@@ -6,30 +6,14 @@ export class Socket69 {
 
         /**
          *
-         * @type {*}
+         * @type {Provider}
+         * @private
          */
-        this.provider = new Provider(provider, options);
-
+        this._provider = new Provider(provider, options);
     }
 
     connect() {
 
-    }
-
-    static providerList() {
-        return {
-            'socket-cluster': SocketClusterAdapter
-        };
-    }
-
-    /**
-     *
-     * @param provider
-     * @param options
-     * @returns {*}
-     */
-    static getProvider(provider, options) {
-        return new Socket69.providerList[provider](options);
     }
 }
 
