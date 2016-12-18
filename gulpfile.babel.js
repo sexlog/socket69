@@ -4,7 +4,8 @@ const gulp       = require('gulp'),
       buffer     = require('vinyl-buffer'),
       browserify = require('browserify'),
       watchify   = require('watchify'),
-      babel      = require('babelify');
+      babel      = require('babelify'),
+      uglify     = require('gulp-uglify');
 
 function compile(watch) {
 
@@ -20,9 +21,10 @@ function compile(watch) {
                })
                .pipe(source('socket69.js'))
                .pipe(buffer())
+               .pipe(uglify())
                .pipe(sourcemaps.init({loadMaps: true}))
                .pipe(sourcemaps.write('./'))
-               .pipe(gulp.dest('./dist'));
+               .pipe(gulp.dest('./dist'))
     }
 
     if (watch) {
