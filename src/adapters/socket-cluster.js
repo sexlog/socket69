@@ -30,5 +30,26 @@ export class SocketClusterAdapter extends Adapter {
         super.connect(options);
 
         this.socket = window.socketCluster.connect(options);
+
+        this.addListeners();
     }
+
+    /**
+     *
+     * @param channel
+     * @param callback
+     */
+    subscribe(channel, callback){
+        this.socket.subscribe(channel, callback);
+    }
+
+    /**
+     *
+     * @param channel
+     * @param data
+     */
+    publish(channel, data){
+        this.socket.publish(channel, data);
+    }
+
 }

@@ -24,6 +24,13 @@ export class Socket69 {
 
         /**
          *
+         * @type {Array}
+         * @private
+         */
+        this._channels = [];
+
+        /**
+         *
          * @type {null}
          */
         this.onError = noop;
@@ -58,6 +65,31 @@ export class Socket69 {
 
     /**
      *
+     * @param channel
+     * @param callback
+     */
+    subscribe(channel, callback){
+
+        if(!channel){
+            throw new ReferenceError('Channel name was not provided');
+        }
+
+        this._channels.push(channel);
+
+        this._provider.subscribe(channel, callback);
+    }
+
+    /**
+     *
+     * @param channel
+     * @param data
+     */
+    publish(channel, data){
+        this._provider.publish(channel, data);
+    }
+
+    /**
+     *
      * @param eventName
      * @param data
      */
@@ -65,6 +97,7 @@ export class Socket69 {
         eventName = ucfirst(eventName, 'on');
         this[eventName].apply(this, [data]);
     }
+
 }
 
 window.Socket69 = Socket69;

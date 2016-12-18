@@ -27,6 +27,16 @@
             console.log('Error', data);
         };
 
+        socket.subscribe('pong', function() {
+            console.log(arguments);
+        });
+
+        var data = {
+            message: 'Oi'
+        };
+
+        socket.publish('ping', data);
+
         /*socket.emit('ping', 'Conectei ao server ' + server);
 
          const defaultChannel = socket.subscribe('pong');

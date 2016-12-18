@@ -57,11 +57,13 @@ export class Adapter {
 
     }
 
+    publish(){}
+
     addListeners() {
         this.events.forEach(event => {
-            this.socket.on(event, () => {
+            this.socket.on(event, (data) => {
                 event = ucfirst(event, 'on');
-                this[event].apply(this, arguments);
+                this[event].apply(this, [data]);
             });
         });
     }
