@@ -8,7 +8,7 @@ const gulp       = require('gulp'),
 
 function compile(watch) {
 
-    let bundler = watchify(browserify('./src/main.js', {
+    let bundler = watchify(browserify('./src/socket69.js', {
         debug: true
     }).transform(babel));
 
@@ -18,7 +18,7 @@ function compile(watch) {
                    console.error(err);
                    this.emit('end');
                })
-               .pipe(source('build.js'))
+               .pipe(source('socket69.js'))
                .pipe(buffer())
                .pipe(sourcemaps.init({loadMaps: true}))
                .pipe(sourcemaps.write('./'))
