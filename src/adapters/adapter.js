@@ -1,7 +1,7 @@
-import {noop} from '../util/noop';
-import {ucfirst} from '../util/ucfirst';
+const noop    = require('../util/noop'),
+      ucfirst = require('../util/ucfirst');
 
-export class Adapter {
+class Adapter {
 
     constructor(config) {
 
@@ -50,14 +50,13 @@ export class Adapter {
     }
 
     disconnect() {
-
     }
 
     subscribe() {
-
     }
 
-    publish(){}
+    publish() {
+    }
 
     addListeners() {
         this.events.forEach(event => {
@@ -84,3 +83,5 @@ export class Adapter {
         this.on('subscribe', data);
     }
 }
+
+module.exports = Adapter;

@@ -1,6 +1,6 @@
-import {Provider} from './provider';
-import {noop} from './util/noop';
-import {ucfirst} from './util/ucfirst';
+const Provider = require('./provider'),
+      noop     = require('./util/noop'),
+      ucfirst  = require('./util/ucfirst');
 
 export class Socket69 {
 
@@ -68,9 +68,9 @@ export class Socket69 {
      * @param channel
      * @param callback
      */
-    subscribe(channel, callback){
+    subscribe(channel, callback) {
 
-        if(!channel){
+        if (!channel) {
             throw new ReferenceError('Channel name was not provided');
         }
 
@@ -84,7 +84,7 @@ export class Socket69 {
      * @param channel
      * @param data
      */
-    publish(channel, data){
+    publish(channel, data) {
         this._provider.publish(channel, data);
     }
 

@@ -1,6 +1,6 @@
-import {Adapter} from './adapter';
+const Adapter = require('./adapter');
 
-export class SocketClusterAdapter extends Adapter {
+class SocketClusterAdapter extends Adapter {
 
     /**
      *
@@ -51,5 +51,6 @@ export class SocketClusterAdapter extends Adapter {
     publish(channel, data) {
         this.socket.publish(channel, data);
     }
-
 }
+
+module.exports = SocketClusterAdapter;

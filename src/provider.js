@@ -1,6 +1,6 @@
-import {SocketClusterAdapter} from './adapters/socket-cluster';
+const SocketClusterAdapter = require('./adapters/socket-cluster');
 
-export class Provider {
+class Provider {
 
     /**
      *
@@ -20,3 +20,5 @@ export class Provider {
         return new list[name](options);
     }
 }
+
+module.exports = Provider;

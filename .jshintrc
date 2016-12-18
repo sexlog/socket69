@@ -22,6 +22,7 @@
     "debug": true,
     "predef": [
         "define",
-        "require"
+        "require",
+        "module"
     ]
 }
