@@ -26,7 +26,25 @@ export class Socket69 {
          *
          * @type {null}
          */
+        this.onError = noop;
+
+        /**
+         *
+         * @type {null}
+         */
         this.onConnect = noop;
+
+        /**
+         *
+         * @type {null}
+         */
+        this.onDisconnect = noop;
+
+        /**
+         *
+         * @type {null}
+         */
+        this.onSubscribe = noop;
     }
 
     /**
