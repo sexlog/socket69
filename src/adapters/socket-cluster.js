@@ -5,6 +5,10 @@ export class SocketClusterAdapter extends Adapter {
 
     constructor(options) {
 
+        if(!window.socketCluster) {
+            throw new ReferenceError('SocketCluster not found');
+        }
+
         let config = {
             protocol: 'http',
             port: '80',
