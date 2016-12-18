@@ -12,8 +12,8 @@ export class Socket69 {
         this._provider = new Provider(provider, options);
     }
 
-    connect() {
-
+    connect(options = {}) {
+        return this._provider.connect(options);
     }
 }
 
