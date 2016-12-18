@@ -1,4 +1,5 @@
 import {Provider} from './provider';
+import {noop} from './util/noop';
 
 export class Socket69 {
 
@@ -10,10 +11,18 @@ export class Socket69 {
          * @private
          */
         this._provider = new Provider(provider, options);
+
+        /**
+         *
+         * @type {null}
+         */
+        this.onConnect = noop;
     }
 
     connect(options = {}) {
-        return this._provider.connect(options);
+        return this._provider.connect(options).then(data => {
+            this.onConnect(data);
+        })
     }
 }
 

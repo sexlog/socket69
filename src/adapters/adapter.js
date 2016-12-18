@@ -1,22 +1,32 @@
 export class Adapter {
 
-    constructor(config, options) {
+    constructor(config) {
 
         /**
-         * Configurações de conexão
+         * Connection configuration
          * @type {*}
          */
-        this.config = Object.assign({}, config, options);
+        this.config = config;
 
         /**
-         * Instância do socket da library do adapter
+         * Socket's connection instance
          * @type {null}
          */
         this.socket = null;
+
+        /**
+         * Required parameters for connection
+         * @type {Array}
+         */
+        this.requiredOptions = [];
     }
 
-    connect() {
-
+    connect(options) {
+        this.requiredOptions.forEach(option => {
+            if (!options[option]) {
+                throw new Error(`Required parameter "${option}" not found`);
+            }
+        });
     }
 
     disconnect() {
@@ -26,5 +36,4 @@ export class Adapter {
     subscribe() {
 
     }
-
 }

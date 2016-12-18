@@ -8,11 +8,27 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/socketcluster-client/5.1.1/socketcluster.js"></script>
     <script src="../dist/socket69.js"></script>
     <script>
-        var socket = new Socket69('socket-cluster', {
-            port: 443
+        let server        = Math.floor(Math.random() * 3) + 1;
+        let serverCluster = 'sc-0' + server;
+
+        const socket = new Socket69('socket-cluster', {
+            port: 8000,
+            secure: true,
+            hostname: serverCluster + '.fcdn.io'
         });
 
         socket.connect();
+        socket.onConnect = function(data) {
+
+        };
+
+        /*socket.emit('ping', 'Conectei ao server ' + server);
+
+         const defaultChannel = socket.subscribe('pong');
+
+         defaultChannel.watch(data => {
+         console.info(data);
+         });*/
     </script>
 </body>
 </html>

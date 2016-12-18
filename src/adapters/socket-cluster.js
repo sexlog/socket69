@@ -1,27 +1,40 @@
 import {Adapter} from './adapter';
-import {Promise} from 'es6-promise';
+// import {Promise} from 'es6-promise';
 
 export class SocketClusterAdapter extends Adapter {
 
-    constructor(options) {
+    /**
+     *
+     * @param config
+     */
+    constructor(config) {
 
-        if(!window.socketCluster) {
+        // SocketCluster is required
+        if (!window.socketCluster) {
             throw new ReferenceError('SocketCluster not found');
         }
 
-        let config = {
-            protocol: 'http',
-            port: '80',
-            host: 'localhost'
-        };
+        super(config);
 
-        super(config, options);
+        this.requiredOptions = ['hostname', 'port'];
     }
 
+    /**
+     *
+     * @param options
+     */
     connect(options) {
 
-        // TODO: Validar se parâmetros obrigatórios foram recebidos
-        console.log(this.config);
-    }
+        options = Object.assign({}, this.config, options);
 
+        super.connect(options);
+
+        this.socket = window.socketCluster.connect(options);
+
+        return new Promise(resolve => {
+            this.socket.on('connect', (data) => {
+                resolve(data);
+            });
+        });
+    }
 }
