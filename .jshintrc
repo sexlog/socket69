@@ -21,20 +21,7 @@
     "smarttabs": true,
     "debug": true,
     "predef": [
-        "angular",
-        "jQuery",
-        "PagSeguroDirectPayment",
-        "protractor",
-        "expect",
-        "browser",
-        "by",
-        "element",
-        "it",
-        "module",
-        "describe",
-        "beforeEach",
-        "afterEach",
-        "inject",
-        "jasmine"
+        "define",
+        "require"
     ]
 }

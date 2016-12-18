@@ -63,14 +63,22 @@ export class Adapter {
                 event = ucfirst(event, 'on');
                 this[event].apply(this, arguments);
             });
-        })
+        });
+    }
+
+    onError(data) {
+        this.on('error', data);
     }
 
     onConnect(data) {
         this.on('connect', data);
     }
 
-    onError(data) {
-        this.on('error', data);
+    onDisconnect(data) {
+        this.on('disconnect', data);
+    }
+
+    onSubscribe(data) {
+        this.on('subscribe', data);
     }
 }

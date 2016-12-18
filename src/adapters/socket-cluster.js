@@ -30,12 +30,5 @@ export class SocketClusterAdapter extends Adapter {
         super.connect(options);
 
         this.socket = window.socketCluster.connect(options);
-
-        this.socket.on('connect', (data) => {
-            this.onConnect(data);
-        });
-        this.socket.on('error', (data) => {
-            this.onError(data);
-        });
     }
 }

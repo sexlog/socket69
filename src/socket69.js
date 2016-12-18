@@ -4,6 +4,11 @@ import {ucfirst} from './util/ucfirst';
 
 export class Socket69 {
 
+    /**
+     *
+     * @param provider
+     * @param options
+     */
     constructor(provider, options) {
 
         /**
@@ -24,10 +29,20 @@ export class Socket69 {
         this.onConnect = noop;
     }
 
+    /**
+     *
+     * @param options
+     * @returns {*}
+     */
     connect(options = {}) {
         return this._provider.connect(options);
     }
 
+    /**
+     *
+     * @param eventName
+     * @param data
+     */
     on(eventName, data) {
         eventName = ucfirst(eventName, 'on');
         this[eventName].apply(this, [data]);
@@ -38,6 +53,7 @@ window.Socket69 = Socket69;
 
 if (typeof define === 'function' && define.amd) {
     define([], function() {
+        'use strict';
         return Socket69;
     });
 }
